@@ -15,7 +15,7 @@ This project is a Django REST API that allows users to upload a CSV file contain
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/yourusername/csv-upload-api.git
+git clone https://github.com/ameer-suhaib/django-rest-csv-upload.git
 cd myproject
 ```
 
@@ -31,6 +31,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Apply Migrations
+Database need to be created (Here I used PostgreSql)
 ```sh
 python manage.py migrate
 ```
