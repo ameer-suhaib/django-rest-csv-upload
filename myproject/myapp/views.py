@@ -9,7 +9,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import User
 from .serializers import UserSerializer
-from django.views.decorators.csrf import csrf_exempt
 
 import logging
 
@@ -19,11 +18,20 @@ logger = logging.getLogger(__name__)
 
 @api_view(['GET'])
 def test_api(request):
+    """
+    Sample test api
+    """
     return Response({"message": "Hello World!"})
 
 
 @api_view(['POST'])
 def upload_csv(request):
+    """
+    Handles CSV file upload, validates data, and saves it to the database.
+    Returns:
+        Response: JSON response with `total_saved`, `total_rejected`, and `validation_errors`.
+    """
+
     logger.info('Entert to the function')
     if 'file' not in request.FILES:
         return Response({"error": "No file provided."}, status=status.HTTP_400_BAD_REQUEST)
