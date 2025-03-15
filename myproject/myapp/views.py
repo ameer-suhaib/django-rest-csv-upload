@@ -23,15 +23,8 @@ def test_api(request):
 
 
 @api_view(['POST'])
-def post_api(request):
-    print("iii")
-    return Response({"message": "Hello World!"})
-
-
-@api_view(['POST'])
 def upload_csv(request):
-    logger.info('Enterrrrrrrrr')
-    print("entwerrrrrrrrrr")
+    logger.info('Entert to the function')
     if 'file' not in request.FILES:
         return Response({"error": "No file provided."}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -39,6 +32,7 @@ def upload_csv(request):
     
     if not file.name.endswith('.csv'):
         return Response({"error": "File is not a CSV."}, status=status.HTTP_400_BAD_REQUEST)
+    logger.info('Checked file type completed')
 
     decoded_file = file.read().decode('utf-8')
     io_string = io.StringIO(decoded_file)
@@ -61,6 +55,7 @@ def upload_csv(request):
             total_rejected += 1
             validation_errors.append({"email": email, "errors": serializer.errors})
 
+    logger.info('Returning response with status code')
     return Response({
         "total_saved": total_saved,
         "total_rejected": total_rejected,

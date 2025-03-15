@@ -16,7 +16,7 @@ This project is a Django REST API that allows users to upload a CSV file contain
 ### 1. Clone the Repository
 ```sh
 git clone https://github.com/yourusername/csv-upload-api.git
-cd csv-upload-api
+cd myproject
 ```
 
 ### 2. Create & Activate a Virtual Environment
